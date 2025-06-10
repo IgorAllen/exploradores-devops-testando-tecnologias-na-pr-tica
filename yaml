@@ -1,0 +1,24 @@
+stages:
+  - install
+  - build
+  - docker-build
+  - docker-publish
+
+install:
+  stage: install
+  image: node:latest
+  script:
+    - echo "Olá Mundo" > ola.txt
+    - node --version
+  artifacts:
+    paths:
+      - ola.txt
+
+build:
+  stage: build
+  image: node:latest
+  script:
+    - cat ola.txt
+  artifacts:
+    paths:
+      - ola.txt
